@@ -1,0 +1,517 @@
+{
+  "nav": {
+    "home": "Rechner",
+    "fluidTypography": "Fluide Typografie",
+    "typeScale": "Typo-Skala",
+    "fluidSpacing": "Fluide Abstände",
+    "tailwind": "Tailwind",
+    "about": "Über",
+    "privacy": "Datenschutz",
+    "language": "Sprache",
+    "skip": "Zum Inhalt springen",
+    "presets": "Vorlagen",
+    "mainNav": "Hauptnavigation",
+    "breadcrumb": "Brotkrümelnavigation"
+  },
+  "footer": {
+    "tagline": "Kostenloser CSS-clamp()-Rechner für fluide Typografie und Abstände. Alle Berechnungen laufen in deinem Browser.",
+    "sisters": "Schwester-Tools",
+    "contrast": "ContrastCheck – WCAG-Kontrastprüfer",
+    "aspect": "Seitenverhältnis-Rechner",
+    "site": "Website",
+    "presets": "Beliebte Vorlagen"
+  },
+  "common": {
+    "faqTitle": "Häufige Fragen",
+    "related": "Verwandte Rechner",
+    "relatedPairs": "Beliebte clamp()-Vorlagen",
+    "pairLink": "{min}px → {max}px"
+  },
+  "tool": {
+    "modes": "Rechenmodus",
+    "modeFont": "Schriftgröße",
+    "modeSpacing": "Abstand",
+    "modeScale": "Typo-Skala",
+    "minSize": "Min. Schriftgröße",
+    "maxSize": "Max. Schriftgröße",
+    "minSpace": "Min. Abstand",
+    "maxSpace": "Max. Abstand",
+    "baseMin": "Basisgröße beim min. Viewport",
+    "baseMax": "Basisgröße beim max. Viewport",
+    "ratioMin": "Skalierungsfaktor beim min. Viewport",
+    "ratioMax": "Skalierungsfaktor beim max. Viewport",
+    "minVw": "Min. Viewport-Breite",
+    "maxVw": "Max. Viewport-Breite",
+    "rootFont": "Root-Schriftgröße",
+    "inputUnit": "Eingabeeinheit",
+    "outputUnit": "Ausgabeeinheit",
+    "precision": "Nachkommastellen",
+    "presets": "Gängige Vorlagen",
+    "result": "Dein clamp()-Wert",
+    "slope": "Steigung",
+    "intercept": "Achsenabschnitt",
+    "outCss": "CSS",
+    "outVar": "CSS Custom Property",
+    "outTailwind": "Tailwind-Klasse",
+    "outScale": "CSS-Variablen (:root)",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "copyLink": "Link zum Teilen kopieren",
+    "shareHint": "Deine Einstellungen stehen in der URL – so kannst du genau dieses Ergebnis speichern oder teilen.",
+    "preview": "Live-Vorschau",
+    "previewWidth": "Simulierte Viewport-Breite",
+    "previewAt": "{size}px bei {vw}px Viewport",
+    "previewText": "Fluide Schrift wächst stufenlos mit dem Bildschirm.",
+    "previewBox": "Fluides Padding und Gap",
+    "sizeTable": "Gerenderte Größe je Viewport",
+    "viewport": "Viewport",
+    "size": "Größe",
+    "step": "Stufe",
+    "variable": "Variable",
+    "atMin": "Bei min.",
+    "atMax": "Bei max.",
+    "wcagWarn": "Das Maximum ist das {ratio}-Fache des Minimums (über 2,5×). So stark skalierender Text erreicht beim Zoomen eventuell keine 200 % – siehe WCAG 1.4.4 Textgröße ändern.",
+    "wcagOk": "Das Maximum ist das {ratio}-Fache des Minimums – innerhalb der 2,5×-Richtlinie für WCAG 1.4.4 Textgröße ändern.",
+    "errors": {
+      "invalid-number": "Bitte gib in jedes Feld eine Zahl ein.",
+      "non-positive": "Größen und Viewport-Breiten müssen größer als null sein.",
+      "viewport-order": "Der min. Viewport muss kleiner als der max. Viewport sein.",
+      "size-order": "Die min. Größe darf nicht größer als die max. Größe sein.",
+      "root-font": "Die Root-Schriftgröße muss größer als null sein."
+    },
+    "ratioNames": [
+      "Große Sekunde",
+      "Kleine Terz",
+      "Große Terz",
+      "Reine Quarte",
+      "Übermäßige Quarte",
+      "Reine Quinte",
+      "Goldener Schnitt"
+    ]
+  },
+  "pages": {
+    "home": {
+      "title": "CSS clamp() Rechner für fluide Typografie | FluidClamp",
+      "description": "Kostenloser CSS-clamp()-Rechner: Mach aus min. und max. Schriftgröße fluide Typografie – mit Live-Vorschau, Tailwind-Ausgabe und Typo-Skala.",
+      "h1": "CSS-clamp()-Rechner für fluide Typografie",
+      "lead": "Gib eine minimale und eine maximale Größe sowie den Viewport-Bereich dazwischen ein. Du erhältst einen clamp()-Wert zum Einfügen, eine Live-Vorschau und die gerenderte Größe an jedem gängigen Breakpoint.",
+      "sections": [
+        {
+          "h2": "So funktioniert der clamp()-Rechner",
+          "p": [
+            "Du legst zwei Punkte fest: die Größe auf dem schmalsten und die Größe auf dem breitesten Bildschirm. Der Rechner zieht eine Gerade zwischen beiden und macht daraus einen einzigen CSS-clamp()-Ausdruck mit drei Teilen – Minimum, bevorzugter Wert und Maximum. Unterhalb des minimalen Viewports bleibt der Wert beim Minimum, oberhalb des maximalen beim Maximum, und dazwischen skaliert er stufenlos, ganz ohne Media Query.",
+            "Die Steigung gibt an, um wie viele Pixel der Wert pro Pixel Viewport-Breite wächst; sie wird in vw angegeben, wobei 1vw 1 % der Viewport-Breite entspricht. Der Achsenabschnitt ist der Wert, den die Gerade bei einem Bildschirm mit null Breite hätte. Zusammen bilden sie das mittlere Argument, zum Beispiel 0.8333rem + 0.8333vw."
+          ]
+        },
+        {
+          "h2": "Warum die Ausgabe rem verwendet",
+          "p": [
+            "Ein rem-Anteil im bevorzugten Wert hält fluiden Text an die Schriftgröße gebunden, die Leser in ihrem Browser eingestellt haben. Eine reine vw-Größe ignoriert diese Einstellung und kann das Zoomen schwächen. Deshalb ist rem die Standardausgabe; px steht bereit, falls deine Design-Tokens in Pixeln definiert sind, und das Feld für die Root-Schriftgröße deckt Projekte ab, die die Schriftgröße von html ändern."
+          ]
+        },
+        {
+          "h2": "Vorschau, Breakpoints und Barrierefreiheit",
+          "p": [
+            "Zieh den Viewport-Regler von 320 bis 1920 px, um den Text in der Größe zu sehen, die er bei dieser Breite hätte. Die Tabelle zeigt die berechneten Größen bei 320 und 375 px für Smartphones, 768 und 1024 px für Tablets sowie 1280, 1440 und 1920 px für Desktops. So prüfst du, dass Überschriften weder auf dem Handy gedrängt noch auf großen Monitoren überdimensioniert wirken.",
+            "Das WCAG-Erfolgskriterium 1.4.4 verlangt, dass sich Text ohne Inhaltsverlust auf 200 % vergrößern lässt. Browser-Zoom verkleinert zugleich den in CSS-Pixeln gemessenen Viewport, daher wächst sehr aggressive fluide Schrift beim Zoomen weniger als erwartet. Eine verbreitete Faustregel lautet: Das Maximum sollte höchstens das 2,5-Fache des Minimums betragen. Der Rechner warnt dich, wenn du darüber liegst."
+          ]
+        },
+        {
+          "h2": "Teilen und exportieren",
+          "p": [
+            "Jede Einstellung wird in der URL gespeichert, sodass du ein Ergebnis als Lesezeichen ablegen oder an Kolleginnen und Kollegen schicken kannst. Kopiere den reinen clamp()-Wert, eine CSS Custom Property für dein :root oder eine Tailwind-Klasse mit beliebigem Wert. Du brauchst einen ganzen Satz Größen? Wechsle in den Modus Typo-Skala und exportiere eine modulare Skala als CSS-Variablen."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Was macht CSS clamp()?",
+          "a": "clamp(MIN, VAL, MAX) liefert VAL, aber nie weniger als MIN und nie mehr als MAX. Enthält VAL eine Viewport-Einheit, wächst das Ergebnis mit dem Bildschirm und stoppt an deinen Grenzen. Alle modernen Browser unterstützen es."
+        },
+        {
+          "q": "Ist clamp() für Schriftgrößen besser als Media Queries?",
+          "a": "Media Queries ändern Größen stufenweise an festen Breakpoints. clamp() skaliert stufenlos mit einer einzigen CSS-Zeile und vermeidet Sprünge. Ändert sich das Layout an einem Breakpoint wirklich, kannst du beides kombinieren."
+        },
+        {
+          "q": "Sollte ich in clamp() px oder rem verwenden?",
+          "a": "Nimm rem für Minimum, Maximum und den festen Teil des bevorzugten Werts, damit der Text der Schriftgrößeneinstellung der Nutzer folgt. Der vw-Anteil sorgt für das fluide Wachstum."
+        },
+        {
+          "q": "Welchen Viewport-Bereich sollte ich wählen?",
+          "a": "Die meisten Websites beginnen bei 320–375 px, den schmalsten Smartphones, und enden bei 1200–1440 px, wo der Hauptinhalt nicht mehr breiter wird. Darüber verbessert größerer Text die Lesbarkeit kaum noch."
+        },
+        {
+          "q": "Werden Daten an einen Server gesendet?",
+          "a": "Nein. Alle Berechnungen laufen in deinem Browser. Vercel Analytics erfasst nur anonyme, cookielose Seitenaufrufe und Button-Ereignisse."
+        }
+      ]
+    },
+    "fluidTypography": {
+      "title": "Fluide Typografie: Leitfaden & clamp()-Generator",
+      "description": "Fluide Typografie mit CSS clamp() lernen: wie die Formel funktioniert, welche Größen passen und wie sie barrierefrei bleibt. Mit kostenlosem Generator.",
+      "h1": "Fluide Typografie mit CSS clamp(): Leitfaden und Generator",
+      "lead": "Fluide Typografie skaliert Text stufenlos zwischen kleinem und großem Bildschirm, statt an Breakpoints zu springen. Nutze den Generator und lies dann, wie du lesbare und barrierefreie Größen wählst.",
+      "sections": [
+        {
+          "h2": "Was fluide Typografie bedeutet",
+          "p": [
+            "Klassische responsive Typografie wählt einige feste Größen und tauscht sie per Media Query aus: 16px auf dem Smartphone, 18px auf dem Tablet, 20px auf dem Desktop. Fluide Typografie ersetzt diese Stufen durch eine stetige Funktion der Viewport-Breite. Mit CSS clamp() passt die ganze Regel in eine Zeile, und der Browser berechnet für jede Breite zwischen deinen beiden Endpunkten die passende Größe."
+          ]
+        },
+        {
+          "h2": "Die Formel hinter clamp()",
+          "p": [
+            "Eine fluide Größe ist eine Gerade durch zwei Punkte: (min. Viewport, min. Größe) und (max. Viewport, max. Größe). Die Steigung ist (max. Größe − min. Größe) ÷ (max. Viewport − min. Viewport); mit 100 multipliziert ergibt sie den vw-Koeffizienten. Der Achsenabschnitt ist min. Größe − Steigung × min. Viewport. Heraus kommt clamp(min. Größe, Achsenabschnitt + Steigung·100vw, max. Größe). Der Generator oben rechnet genau so und rundet auf die gewählte Anzahl Nachkommastellen."
+          ]
+        },
+        {
+          "h2": "Gute Größen wählen",
+          "p": [
+            "Fließtext muss sich selten stark ändern: 16 bis 18 oder 16 bis 20 Pixel decken die meisten Leselayouts ab. Überschriften profitieren mehr, denn eine 48px-Headline, die auf dem Laptop gut aussieht, belegt auf dem Smartphone den halben Bildschirm. Beginne mit der größten Überschrift und arbeite dich nach unten; je kleiner der Text, desto kleiner sollte das Verhältnis zwischen Minimum und Maximum sein.",
+            "Leite den Viewport-Bereich aus deinem Layout ab, nicht aus Gerätelisten. Das Minimum liegt meist bei 320 oder 360 px. Das Maximum ist die Breite, bei der dein Inhaltscontainer seine max-width erreicht; danach wächst die Zeilenlänge nicht mehr, also sollte auch die Schriftgröße nicht weiter wachsen."
+          ]
+        },
+        {
+          "h2": "Checkliste Barrierefreiheit",
+          "p": [
+            "Halte Minimum, Maximum und Achsenabschnitt in rem, damit die Schrifteinstellungen der Nutzer weiter greifen. Prüfe WCAG 1.4.4 mit 200 % Zoom: Ist das Maximum mehr als etwa das 2,5-Fache des Minimums, vergrößert der Zoom den Text womöglich nicht genug – das Tool warnt dich. Verwende eine relative Zeilenhöhe (etwa 1.5), damit sie mit der Schrift skaliert, und teste deine längsten Wörter auf dem schmalsten Bildschirm."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Schadet fluide Typografie der Barrierefreiheit?",
+          "a": "Nicht, wenn sie mit rem und einem moderaten Verhältnis gebaut ist. Probleme entstehen bei reinen vw-Größen oder wenn die Größe zwischen min. und max. Viewport um mehr als etwa das 2,5-Fache wächst, weil der Browser-Zoom dann weniger bewirkt."
+        },
+        {
+          "q": "Brauche ich noch Media Queries?",
+          "a": "Für Schriftgrößen meist nicht. Behalte Media Queries für Layoutwechsel, etwa von einer auf zwei Spalten."
+        },
+        {
+          "q": "Welche Browser unterstützen clamp()?",
+          "a": "Chrome, Edge, Firefox und Safari unterstützen clamp() seit 2020, es ist also produktionsreif. Ältere Browser ignorieren die Deklaration einfach, daher kannst du davor eine feste Ersatzgröße angeben."
+        },
+        {
+          "q": "Sollte die Zeilenhöhe auch fluide sein?",
+          "a": "Nutze eine einheitenlose Zeilenhöhe wie 1.2 für Überschriften und 1.5 für Fließtext. Dann skaliert sie automatisch mit der fluiden Schriftgröße."
+        }
+      ]
+    },
+    "typeScale": {
+      "title": "Fluider Typo-Skala-Generator mit clamp()",
+      "description": "Fluide modulare Typo-Skala erzeugen: Basisgröße und Faktoren für kleine und große Screens wählen, Stufen −2 bis +6 als clamp()-Variablen exportieren.",
+      "h1": "Generator für fluide Typo-Skalen",
+      "lead": "Erstelle eine komplette modulare Skala, in der jede Stufe fluide ist. Wähle eine Basisgröße und einen Faktor für den kleinsten und den größten Bildschirm, prüfe das Ergebnis und kopiere die CSS-Variablen.",
+      "sections": [
+        {
+          "h2": "Was eine modulare Typo-Skala ist",
+          "p": [
+            "Eine modulare Skala multipliziert eine Basisgröße immer wieder mit demselben Faktor: Mit 16px Basis und Faktor 1,25 erhältst du 16, 20, 25, 31,25 und so weiter, und durch Teilen die kleineren Stufen 12,8 und 10,24. Weil alle Größen über einen einzigen Faktor zusammenhängen, wirken Überschriften, Fließtext und Bildunterschriften wie aus einer Familie."
+          ]
+        },
+        {
+          "h2": "Warum zwei Faktoren",
+          "p": [
+            "Auf kleinen Bildschirmen ist kein Platz für einen dramatischen Kontrast zwischen Überschriften und Text, während große Bildschirme ohne ihn flach wirken. Dieser Generator nimmt deshalb einen Faktor für den minimalen und einen für den maximalen Viewport. Beliebt ist eine kleine Terz (1,2) auf dem Smartphone und eine große Terz (1,25) oder reine Quarte (1,333) auf dem Desktop. Jede Stufe wird so zu einem eigenen clamp()-Wert, der mit wachsendem Viewport von der kleinen zur großen Skala wandert."
+          ]
+        },
+        {
+          "h2": "Die exportierten Variablen verwenden",
+          "p": [
+            "Der Export ist ein :root-Block mit Variablen von --step--2 bis --step-6. Weise sie Elementen zu, etwa h1 Stufe 5, h2 Stufe 4, Fließtext Stufe 0 und Kleingedrucktes Stufe −1. Da die Namen Positionen auf der Skala beschreiben und keine Elemente, kannst du das ganze System später neu abstimmen, indem du nur Basisgröße und Faktoren änderst.",
+            "Behalte die größten Stufen im Blick: Bei einem großen Faktor können sie die 2,5×-Zoom-Richtlinie aus WCAG 1.4.4 überschreiten. Die Tabelle zeigt die Größe an beiden Enden des Bereichs, damit du zu schnell wachsende Stufen erkennst und bei Bedarf den Desktop-Faktor senkst."
+          ]
+        },
+        {
+          "h2": "Einen Faktor wählen",
+          "p": [
+            "Niedrige Faktoren wie 1,125 oder 1,2 passen zu dichten Oberflächen, Dashboards und Dokumentation. Mittlere wie 1,25 und 1,333 sind vielseitig für Marketingseiten und Blogs. Hohe Faktoren wie 1,5 oder der Goldene Schnitt 1,618 erzeugen starken redaktionellen Kontrast, brauchen aber weniger Stufen, um handhabbar zu bleiben."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Wie viele Stufen brauche ich?",
+          "a": "Die meisten Websites nutzen fünf bis sieben: ein oder zwei unter der Basis für Bildunterschriften und Labels, die Basis für Fließtext und drei oder vier darüber für Überschriften. Der Generator liefert −2 bis +6, damit du Überflüssiges löschen kannst."
+        },
+        {
+          "q": "Welcher Faktor passt zu einem Blog?",
+          "a": "Eine kleine Terz (1,2) mobil und eine große Terz (1,25) oder reine Quarte (1,333) auf dem Desktop ergeben klare Überschriften, ohne den Text zu erdrücken."
+        },
+        {
+          "q": "Kann ich die Variablen in Tailwind nutzen?",
+          "a": "Ja. Verwende text-[length:var(--step-2)] oder registriere sie im Tailwind-Theme als Schriftgrößen, um Utilities wie text-step-2 zu schreiben."
+        },
+        {
+          "q": "Warum heißen negative Stufen --step--1?",
+          "a": "Der Name ist --step- gefolgt von der Stufennummer, also wird Stufe −1 zu --step--1. Das ist ein gültiger Name für eine Custom Property und entspricht der Konvention vieler Tools für fluide Typografie."
+        }
+      ]
+    },
+    "fluidSpacing": {
+      "title": "Rechner für fluide Abstände: clamp() für Padding",
+      "description": "Fluides Padding, Margin und Gap mit CSS clamp() berechnen. Min. und max. Abstand je Viewport festlegen, CSS oder Tailwind-Klasse kopieren. Kostenlos.",
+      "h1": "Rechner für fluide Abstände: Padding, Margin und Gap",
+      "lead": "Abstände profitieren genauso von fluiden Größen wie Schrift. Lege fest, wie viel Raum du auf dem Smartphone und auf dem Desktop willst, und erhalte einen clamp()-Wert für Padding, Margin oder Gap.",
+      "sections": [
+        {
+          "h2": "Warum Abstände fluide machen",
+          "p": [
+            "Großzügiger Weißraum lässt ein Desktop-Layout ruhig wirken, doch dasselbe Sektions-Padding von 96px verschenkt auf dem Smartphone ein Drittel des Bildschirms. Feste Breakpoints lösen das in Stufen und lassen Tablets oft mit zu engen oder zu weiten Abständen zurück. Ein fluider Wert wächst stetig, jeder Bildschirm erhält Raum im Verhältnis zu seiner Breite, und du schreibst eine Deklaration statt drei."
+          ]
+        },
+        {
+          "h2": "Dieselbe Mathematik wie bei fluider Schrift",
+          "p": [
+            "Abstände nutzen genau dieselbe lineare Formel wie Schriftgrößen: ein Minimum, ein Maximum und eine Gerade zwischen zwei Viewport-Breiten. Der Unterschied liegt in den Zahlen. Abstände wachsen oft um einen größeren Faktor als Text – von 24px auf 64px Sektions-Padding ist üblich –, weil Weißraum nicht lesbar bleiben muss. Der 2,5×-Zoom-Hinweis der WCAG gilt für Abstände nicht, erscheint aber als Erinnerung, falls du den Wert für Text wiederverwendest."
+          ]
+        },
+        {
+          "h2": "Eine Abstandsskala aufbauen",
+          "p": [
+            "Für ein konsistentes System definierst du einige fluide Abstands-Tokens wie --space-s, --space-m und --space-l, jeweils mit eigenem Minimum und Maximum. Die kleinen nutzt du für Lücken innerhalb von Komponenten, die mittleren für das Padding von Karten und die großen zwischen Seitenabschnitten. Kombiniere sie mit einer fluiden Typo-Skala im selben Viewport-Bereich, damit Text und Raum im Gleichschritt wachsen.",
+            "In Tailwind setzt du das Ergebnis als beliebigen Wert ein, etwa p-[clamp(…)], gap-[clamp(…)] oder my-[clamp(…)]. Der Rechner gibt eine fertige Klasse mit Unterstrichen statt Leerzeichen aus – so erwartet Tailwind Leerzeichen in beliebigen Werten."
+          ]
+        },
+        {
+          "h2": "Tipps",
+          "p": [
+            "Halte auch Abstände in rem, damit sie zusammen mit dem Text die Schrifteinstellungen der Nutzer respektieren. Verzichte bei Rahmen und Haarlinien auf fluide Werte, da Pixelbruchteile unscharf wirken können. Prüfe die Vorschau bei 320px, ob das Padding noch genug Platz für Inhalte lässt."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Kann man clamp() für Padding und Margin nutzen?",
+          "a": "Ja. clamp() funktioniert mit jeder CSS-Länge, auch mit Padding, Margin, Gap, Width, Border-Radius und Inset-Werten."
+        },
+        {
+          "q": "Sollten Abstände in rem oder px angegeben werden?",
+          "a": "Meist ist rem besser: Dann wachsen Abstände mit, wenn Nutzer ihre Standardschriftgröße erhöhen, und das Verhältnis von Text zu Weißraum bleibt erhalten."
+        },
+        {
+          "q": "Ist die 2,5×-Warnung der WCAG für Abstände relevant?",
+          "a": "Nein. Die Richtlinie betrifft das Vergrößern von Text. Abstände dürfen stärker wachsen, solange Inhalte auf kleinen Bildschirmen noch Platz haben."
+        },
+        {
+          "q": "Wie nutze ich den Wert in Tailwind?",
+          "a": "Kopiere die Tailwind-Klasse und ändere bei Bedarf das Präfix, etwa zu p-, px-, gap- oder space-y-. Der Wert in den eckigen Klammern bleibt gleich."
+        }
+      ]
+    },
+    "tailwind": {
+      "title": "Tailwind-clamp()-Generator für fluide Schriftgrößen",
+      "description": "Erzeuge beliebige Tailwind-CSS-Werte mit clamp(): text-[clamp(...)]-Klassen für fluide Schriftgrößen und Abstände sowie Theme-Variablen. Kostenlos.",
+      "h1": "Tailwind-clamp()-Generator",
+      "lead": "Fluide Schriftgrößen in Tailwind CSS ganz ohne Plugins. Der Rechner schreibt eine text-[clamp(…)]-Klasse, die du direkt ins Markup einfügen kannst, plus eine CSS-Variable für dein Theme.",
+      "sections": [
+        {
+          "h2": "Fluide Größen mit beliebigen Werten in Tailwind",
+          "p": [
+            "Tailwind erlaubt jeden CSS-Wert in eckigen Klammern. Da Leerzeichen Klassen trennen, werden Leerzeichen im Wert als Unterstriche geschrieben, die Tailwind beim Erzeugen des CSS zurückwandelt. Der Rechner erledigt das für dich und erzeugt eine Klasse wie text-[clamp(1rem,0.8333rem_+_0.8333vw,1.5rem)]. Die Unterstriche um das Pluszeichen sind wichtig: CSS verlangt Leerzeichen um + und − in mathematischen Funktionen."
+          ]
+        },
+        {
+          "h2": "Ab ins Theme",
+          "p": [
+            "Beliebige Klassen sind ideal für einzelne Überschriften. Taucht dieselbe Größe an vielen Stellen auf, gehört sie ins Theme. In Tailwind v4 fügst du im @theme-Block eine Variable wie --text-fluid-lg: clamp(…) hinzu und kannst überall text-fluid-lg verwenden. In Tailwind v3 ergänzt du den Wert unter theme.extend.fontSize in tailwind.config.js.",
+            "Fluide Größen im Theme sind eine einzige Quelle der Wahrheit: Ändert sich das Design, passt du eine Zeile an und alle Komponenten ziehen nach."
+          ]
+        },
+        {
+          "h2": "Abstands-Utilities",
+          "p": [
+            "Dieselbe Ausgabe funktioniert für Abstände. Schalte den Rechner in den Abstandsmodus, dann schreibt er p-[clamp(…)], das du nach Bedarf in px-, py-, m-, gap- oder space-y- umbenennst. Kombinierst du fluide Abstände mit fluider Schrift, brauchen die meisten Seiten für Größen gar keine responsiven Präfixe mehr."
+          ]
+        },
+        {
+          "h2": "Typische Stolperfallen",
+          "p": [
+            "Bewirkt eine text-[…]-Klasse nichts, prüfe, ob der Wert normale Leerzeichen enthält und ob Tailwind den vollständigen Klassennamen in deinen Quelldateien findet – per String-Verkettung zusammengesetzte Klassennamen werden nicht erkannt. Hält Tailwind den Wert für eine Farbe, schreib ihn als text-[length:clamp(…)], um den Typ ausdrücklich anzugeben."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Brauche ich ein Plugin für fluide Schrift in Tailwind?",
+          "a": "Nein. Beliebige Werte unterstützen clamp() in Tailwind v3 und v4 von Haus aus. Plugins bieten nur bequemere Namen."
+        },
+        {
+          "q": "Warum enthält die Klasse Unterstriche?",
+          "a": "Klassennamen dürfen keine Leerzeichen enthalten. Tailwind wandelt Unterstriche beim Erzeugen des CSS in Leerzeichen um, sodass das + in clamp() die von CSS verlangten Leerzeichen erhält."
+        },
+        {
+          "q": "Wie füge ich eine fluide Größe zum Tailwind-v4-Theme hinzu?",
+          "a": "Deklariere in @theme --text-fluid-xl: clamp(…); – Tailwind erzeugt dann automatisch die Utility text-fluid-xl."
+        },
+        {
+          "q": "Funktioniert das mit responsiven Präfixen wie md:?",
+          "a": "Ja, für Größen brauchst du sie aber selten: Ein clamp()-Wert passt sich bereits jeder Viewport-Breite an."
+        }
+      ]
+    },
+    "about": {
+      "title": "Über FluidClamp – kostenloser CSS-clamp()-Rechner",
+      "description": "FluidClamp ist ein kostenloser, datenschutzfreundlicher CSS-clamp()-Rechner für fluide Typografie und Abstände. Für wen er ist und wie er arbeitet.",
+      "h1": "Über FluidClamp",
+      "lead": "FluidClamp ist ein kleines, kostenloses Werkzeug für Frontend-Entwickler und Designerinnen, die fluide Typografie und Abstände wollen, ohne die Algebra von Hand zu rechnen.",
+      "sections": [
+        {
+          "h2": "Was das Tool macht",
+          "p": [
+            "Es wandelt eine minimale und maximale Größe samt Viewport-Bereich in einen CSS-clamp()-Wert um, zeigt, wie das Ergebnis bei gängigen Bildschirmbreiten aussieht, und exportiert es als reines CSS, Custom Property oder Tailwind-Klasse. Der Modus Typo-Skala erstellt eine komplette modulare Skala, der Abstandsmodus macht dasselbe für Padding, Margin und Gap."
+          ]
+        },
+        {
+          "h2": "Für wen es gedacht ist",
+          "p": [
+            "Für Frontend-Entwickler, die einen verlässlichen clamp()-Wert wollen, ohne eine Tabellenkalkulation zu öffnen, für Designer, die responsive Typo-Spezifikationen übergeben, und für Teams, die Designsysteme mit fluiden Tokens bauen. Die Erklärungen auf jeder Seite sind so geschrieben, dass Einsteiger die Mathematik nachvollziehen können, während Erfahrene einfach das Ergebnis kopieren und weiterarbeiten."
+          ]
+        },
+        {
+          "h2": "Wie es gebaut ist",
+          "p": [
+            "Die Website wird mit Next.js statisch generiert und läuft vollständig in deinem Browser. Es gibt kein Konto, keine Datenbank und keine serverseitige Verarbeitung; deine Werte stehen nur in der URL. Die Mathematik steckt in einem kleinen, per Unit-Tests geprüften TypeScript-Modul, und die Website gibt es in sieben Sprachen."
+          ]
+        },
+        {
+          "h2": "Feedback",
+          "p": [
+            "FluidClamp wird zusammen mit anderen kostenlosen Web-Tools wie ContrastCheck und dem Seitenverhältnis-Rechner gepflegt. Wenn dir ein Fehler oder eine holprige Übersetzung auffällt, melde es bitte über das GitHub-Repository des Projekts."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Ist FluidClamp kostenlos?",
+          "a": "Ja. Die Nutzung ist kostenlos und ohne Registrierung möglich, kostenpflichtige Tarife gibt es nicht."
+        },
+        {
+          "q": "Darf ich das erzeugte CSS in kommerziellen Projekten nutzen?",
+          "a": "Ja. Die Ausgabe ist schlichte CSS-Mathematik; du kannst sie überall ohne Namensnennung verwenden."
+        },
+        {
+          "q": "Funktioniert der Rechner offline?",
+          "a": "Sobald die Seite geladen ist, laufen alle Berechnungen lokal – das Tool funktioniert also weiter, auch wenn die Verbindung abbricht."
+        },
+        {
+          "q": "Welche Sprachen gibt es?",
+          "a": "Englisch, vereinfachtes Chinesisch, Spanisch, Deutsch, Französisch, Japanisch und Portugiesisch. Wechsle über das Sprachmenü in der Kopfzeile."
+        }
+      ]
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung | FluidClamp",
+      "description": "FluidClamp verarbeitet alles in deinem Browser. Keine Konten, keine Cookies, keine Daten an Server – nur cookielose Seitenaufrufe via Vercel Analytics.",
+      "h1": "Datenschutzerklärung",
+      "lead": "Kurz gesagt: Alles, was du eingibst, bleibt in deinem Browser. Wir verwenden keine Cookies und erheben keine personenbezogenen Daten.",
+      "sections": [
+        {
+          "h2": "Verarbeitung im Browser",
+          "p": [
+            "Alle Berechnungen erfolgen per JavaScript auf deinem Gerät. Die eingegebenen Werte werden nie an einen Server gesendet. Damit Ergebnisse teilbar sind, werden deine Einstellungen in die URL geschrieben; diese URL wird nur geteilt, wenn du sie selbst kopierst oder als Lesezeichen speicherst."
+          ]
+        },
+        {
+          "h2": "Statistik",
+          "p": [
+            "Wir nutzen Vercel Web Analytics, um Seitenaufrufe und einige anonyme Ereignisse zu zählen, etwa Klicks auf die Schaltflächen zum Kopieren, für Vorlagen und für die Sprache. Vercel Analytics arbeitet ohne Cookies: Es setzt keine Cookies, nutzt keinen lokalen Speicher zum Tracking und bildet keine websiteübergreifenden Profile. Besucher werden über einen kurzlebigen Hash gezählt, der innerhalb eines Tages verworfen wird."
+          ]
+        },
+        {
+          "h2": "Hosting und Kontakt",
+          "p": [
+            "Die Website wird bei Vercel gehostet, das zur Sicherheit und Stabilität übliche Server-Logs wie IP-Adressen verarbeitet. Wir schalten keine Werbung, verkaufen keine Daten und binden keine Tracker von Drittanbietern ein. Fragen zu dieser Erklärung kannst du über das GitHub-Repository des Projekts stellen."
+          ]
+        },
+        {
+          "h2": "Änderungen dieser Erklärung",
+          "p": [
+            "Sollten wir einmal Funktionen ergänzen, die Daten anders verarbeiten, aktualisieren wir diese Seite, bevor die Änderung live geht, und vermerken hier das Datum. Da die Website keine Konten hat, liegen bei uns keine personenbezogenen Daten vor, die wir auf Anfrage exportieren oder löschen könnten."
+          ]
+        }
+      ],
+      "faq": [
+        {
+          "q": "Verwendet FluidClamp Cookies?",
+          "a": "Nein. Weder das Tool noch die Statistik setzen Cookies."
+        },
+        {
+          "q": "Werden meine Werte irgendwo gespeichert?",
+          "a": "Nur in der URL in deinem eigenen Browser. Bei uns wird nichts gespeichert."
+        },
+        {
+          "q": "Was erfasst die Statistik?",
+          "a": "Anonyme Seitenaufrufe, die Seitensprache und einige Button-Ereignisse, etwa das Kopieren eines Werts oder die Wahl einer Vorlage. Personenbezogene Daten werden nicht erhoben."
+        },
+        {
+          "q": "Kann ich das Tool ohne Statistik nutzen?",
+          "a": "Ja. Content-Blocker, die Vercel Analytics blockieren, beeinträchtigen den Rechner nicht."
+        }
+      ]
+    }
+  },
+  "pair": {
+    "title": "Fluide Größe {min}px bis {max}px – CSS-clamp()-Rechner",
+    "description": "Fluider CSS-clamp()-Wert von {min}px bis {max}px ({minRem}rem → {maxRem}rem) zwischen {minVw}px und {maxVw}px Viewport, mit Vorschau und Tailwind-Klasse.",
+    "h1": "CSS clamp() von {min}px bis {max}px",
+    "lead": "Dieser Rechner ist mit einer Größe vorbelegt, die von {min}px ({minRem}rem) auf kleinen Bildschirmen bis {max}px ({maxRem}rem) auf breiten Bildschirmen skaliert. Passe jedes Feld zur Feinabstimmung an.",
+    "sections": [
+      {
+        "h2": "Der clamp()-Wert für {min}–{max}px",
+        "p": [
+          "Bei einem Viewport-Bereich von {minVw}px bis {maxVw}px lautet das Ergebnis {css}. Pro 100px Viewport-Breite wächst die Größe um {per100}px und erreicht etwa {at768}px auf einem 768px-Tablet und {at1024}px bei 1024px, bevor sie ab {maxVw}px bei {max}px bleibt.",
+          "Der bevorzugte Wert kombiniert einen festen rem-Anteil mit einem vw-Anteil. Der rem-Anteil hält den Text an die Browser-Schriftgröße der Leser gebunden, der vw-Anteil liefert das Wachstum. Ändere die Viewport-Felder oben, wenn dein Layout-Container früher oder später aufhört zu wachsen."
+        ]
+      },
+      {
+        "h2": "Wann {min}px bis {max}px passt",
+        "p": [
+          "{useCase}",
+          "Das Maximum ist das {ratio}-Fache des Minimums und liegt damit innerhalb der 2,5×-Richtlinie, die oft für WCAG 1.4.4 Textgröße ändern herangezogen wird. Browser-Zoom vergrößert diese Größe also weiterhin vorhersehbar."
+        ]
+      },
+      {
+        "h2": "So entstehen die Zahlen",
+        "p": [
+          "Steigung = ({max} − {min}) ÷ ({maxVw} − {minVw}) = {slope}, also {slopeVw}vw. Achsenabschnitt = {min} − Steigung × {minVw} = {interceptPx}px bzw. {interceptRem}rem bei 16px Root-Schriftgröße. Diese beiden Zahlen bilden das mittlere Argument von clamp(); das erste und letzte Argument sind dein Minimum und Maximum, umgerechnet in rem."
+        ]
+      },
+      {
+        "h2": "Im eigenen Projekt verwenden",
+        "p": [
+          "Füge den Wert in eine font-size-Deklaration ein, speichere ihn in einer Custom Property wie --fluid-size oder nutze die Tailwind-Klasse {tailwind}. Brauchst du einen ganzen Satz zusammengehöriger Größen, baut der Typo-Skala-Generator Stufen um eine Basisgröße mit demselben Viewport-Bereich."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Wie viel sind {min}px in rem?",
+        "a": "{min}px entsprechen {minRem}rem und {max}px entsprechen {maxRem}rem bei einer Root-Schriftgröße von 16px, dem Browser-Standard. Nutzt deine Website eine andere Root-Größe, ändere das Feld Root-Schriftgröße und die rem-Werte passen sich an."
+      },
+      {
+        "q": "Wie groß ist der Text auf einem Smartphone?",
+        "a": "Bei einem 375px breiten Smartphone-Viewport wird der Wert mit etwa {at375}px dargestellt. Bei {minVw}px und darunter bleibt er beim Minimum von {min}px."
+      },
+      {
+        "q": "Wächst die Größe auf großen Monitoren über {max}px hinaus?",
+        "a": "Nein. Ab einem Viewport von {maxVw}px liefert clamp() das Maximum von {max}px, die Größe wächst also auf 1920px- oder Ultrawide-Bildschirmen nicht weiter."
+      },
+      {
+        "q": "Kann ich den Wert für Padding oder Gap verwenden?",
+        "a": "Ja. Die Mathematik ist für jede CSS-Länge identisch. Der Rechner für fluide Abstände liefert passende Ausgaben wie die Tailwind-Klassen p-[…] oder gap-[…]."
+      }
+    ],
+    "useCases": {
+      "14-16": "Ein Bereich von 14 bis 16px eignet sich für sekundären Text: Bildunterschriften, Formularhinweise, Tabellenzellen, Fußnoten und dichte Navigation. Die Änderung ist dezent – auf dem Desktop wird der Text etwas angenehmer, ohne auf dem Smartphone mehr Platz zu brauchen. Kombiniere ihn mit 16–18px Fließtext für eine klare Hierarchie.",
+      "16-20": "16 bis 20px ist ein klassischer Bereich für Fließtext auf Content-Websites. Smartphones behalten die 16px des Browser-Standards, Desktop-Leser bekommen eine größere Schrift, die zu längeren Zeilen passt. Blogs, Dokumentation und lange Artikel profitieren am meisten.",
+      "16-24": "16 bis 24px funktioniert gut für Teaser-Absätze, Einleitungen und kleine Zwischenüberschriften. Auf dem Smartphone beginnt es in normaler Fließtextgröße und wird auf dem Desktop zu selbstbewussten 24px – mehr Betonung ohne das Gewicht einer echten Überschrift.",
+      "18-24": "18 bis 24px passt zu h4- und h5-Überschriften, Kartentiteln, Zitaten und größerem Fließtext auf Landingpages. Der Start bei 18px hebt sich selbst auf den kleinsten Bildschirmen vom 16px-Fließtext ab.",
+      "20-32": "20 bis 32px ist ein typischer Bereich für h3 und Abschnittsüberschriften. Auf dem Smartphone, wo Platz knapp ist, bleibt er kompakt, und in breiten Layouts wächst er zu einer klaren Abschnittsmarke.",
+      "24-48": "24 bis 48px ist eine gängige Wahl für h2-Überschriften und Feature-Titel. Die Größe verdoppelt sich über den Bereich – das gibt Desktop-Layouts starken Kontrast und hält Überschriften auf dem Smartphone bei ein bis zwei Zeilen.",
+      "32-64": "32 bis 64px eignet sich für Seitentitel und h1-Überschriften auf Marketing-Websites. Eine 32px-Überschrift wirkt auf dem Smartphone schon kräftig, mit 64px trägt sie einen Desktop-Hero über die volle Breite.",
+      "40-80": "40 bis 80px ist für Hero-Headlines und Kampagnen-Landingpages gedacht, bei denen die Überschrift das zentrale visuelle Element ist. Prüfe lange Wörter bei 320px – bei 40px brauchen sie eventuell Silbentrennung oder kürzeren Text.",
+      "48-96": "48 bis 96px ist Display-Typografie: riesige Hero-Titel, große Zahlen und plakative Statements. Setze sie sparsam ein, mit einer engen Zeilenhöhe um 1–1,1, und stelle sicher, dass dein längstes Wort auch in der kleinsten Größe passt."
+    }
+  }
+}
