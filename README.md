@@ -23,7 +23,7 @@ npm run build    # static production build (all routes ○/●)
 
 | Variable | Default | Purpose |
 |--|--|--|
-| `NEXT_PUBLIC_SITE_URL` | `https://fluid-clamp.vercel.app` | Base URL for canonical, hreflang, sitemap, robots, OG and JSON-LD. Set it once a custom domain is bound. |
+| `NEXT_PUBLIC_SITE_URL` | `https://fluidclamp.top` | Base URL for canonical, hreflang, sitemap, robots, OG and JSON-LD. Set it once a custom domain is bound. |
 
 ## Pages
 
